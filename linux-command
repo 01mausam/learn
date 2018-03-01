@@ -1,0 +1,243 @@
+    **TERMINAL commands**
+    
+    To hide a file in linux,start filename with .
+    
+    CTRL + H to hide/unhide folder
+    
+    
+    GET root access : sudo -i 
+    Return to normal excess : exit,CTRL+D
+    
+    xdg-open .  OR  gnome-open .
+    
+    use 'TAB' to autocomplete
+    
+    ls -all [list all files in a directory with details]
+    
+    df == disk free
+    
+    -a == all
+    -h == human-readable
+    -i == insensitive (case)
+    
+    touch file1 file2 -- create files in a batch
+    
+    
+    **UBUNTU_SPECIFIC**
+    
+--Personal Package Archive (PPA) is a software repository for uploading source packages to be built and published as an 
+  Advanced Packaging Tool (APT) repository by Launchpad. While the term is used exclusively within Ubuntu
+    
+    
+    
+    
+   // Monaco font -MAC os terminal font
+    
+    
+    $ --Shell promt (Terminal is ready to accept any command)
+    
+    
+  **NAVIGATING THE FILESYSTEM**
+    
+    
+   1) ls -- LIST
+    
+   2) pwd-- Present working directory
+    
+   3) cd -- Change directory  
+     cd | -- | stands for an --ARGUMENT--(name of the dir)
+     cd ||-- Nested argument(path)
+    
+   4) mkdir argument--make dir
+    
+   5) touch argument.txt (makes a new file)
+    
+     
+    --OPTIONS for ls--
+    
+    -a (all including the hidden files and dir)
+    -l (long format)-- 7 columns separated by space
+        1)Access rights(actions permitted on a file or dir)
+        2)No. of hard links( counts the number of child directories and files. This number includes the parent directory link (..) and  current directory link (.)
+        3)username of the file owner
+        4)name of the group that owns file
+        5)Size of the file in bytes
+        6)Date and time last modified
+        7)Name of the file or dir
+        
+    -t (order by time last modified)
+    
+    COMBINLY -alt
+    
+    
+    **MANIPULATING THE FILESYS**
+    
+    
+    1)cp copies files
+    2)mv moves and renames files
+    3)rm removes files
+    4)rm -r removes directories
+
+        -r (recursive)--used to delete a dir and all its child dir
+        
+    --Wildcards(* ?) are useful for selecting groups of files and directories
+    
+    
+    
+ ***REDIRECTING INPUT AND OUTPUT***
+ 
+ 1) echo "Hello"
+    
+
+    standard input, abbreviated as stdin, is information inputted into the terminal through the keyboard or input device.
+
+    standard output, abbreviated as stdout, is the information outputted after a process is run.
+
+    standard error, abbreviated as stderr, is an error message outputted by a failed process.
+
+ 2) echo "Hello" > hello.txt
+    cat hello.txt
+    
+    The > command redirects the standard output to a file
+    
+    The cat command outputs the contents of a file to the terminal
+    
+ 3) cat mausam.txt > vineet.txt (OVERWRITES)
+
+    > takes the standard output of the command on the left, and redirects it to the file on the right.  
+ 
+ 4) cat mausam.txt >> vineet.txt (APPENDS)
+
+    >> takes the standard output of the command on the left and appends (adds) it to the file on the right 
+    
+ 5) cat < lakes.txt (similar to) cat lakes.txt
+ 
+    < takes the standard input from the file on the right and inputs it into the program on the left.
+    
+ 6) cat volcanoes.txt | wc ---[command to command" redirection]
+ 
+  wc command outputs the number of lines, words, and characters 
+ | is a "pipe". 
+ The | takes the standard output of the command on the left, and pipes it as standard input to the command on the right
+    
+ 7) cat volcanoes.txt | wc | cat > islands.txt
+
+Multiple |s can be chained together. 
+Here the standard output of cat volcanoes.txt is "piped" to the wc command. 
+The standard output of wc is then "piped" to cat. 
+Finally, the standard output of cat is redirected to islands.txt
+    
+ 8)cat lakes.txt | sort > sorted-lakes.txt
+ 
+ sort takes the standard input and orders it alphabetically for the standard output    
+    
+ 9)sort deserts.txt | uniq > uniq-deserts.txt
+ 
+ uniq stands for "unique" and filters out adjacent, duplicate lines in a file
+    
+10)grep Mount mountains.txt
+   grep -i Mount mountains.txt   
+    
+   grep stands for "global regular expression print". 
+   It searches files for lines that match a pattern and returns the results. 
+   It is also case sensitive.
+   grep can also be used to search within a directory.
+   
+   grep -i enables the command to be case insensitive 
+   
+11)grep -R Arctic /home/ccuser/workspace/geography
+   grep -Rl Arctic /home/ccuser/workspace/geography
+ 
+grep -R searches all files in a directory and outputs filenames and lines containing matched results. 
+-R stands for "recursive"
+    
+grep -Rl searches all files in a directory and outputs only filenames with matched results. 
+-R stands for "recursive" and l stands for "files with matches"
+
+12)sed 's/snow/rain/' forests.txt
+   sed 's/snow/rain/g' forests.txt
+    
+  sed stands for "stream editor". 
+  It accepts standard input and modifies it based on an expression, before displaying it as output data. 
+  It is similar to "find and replace". 
+    
+ s: stands for "substitution". it is always used when using sed for substitution
+    
+    Command 1: sed searches forests.txt for the word "snow" and replaces it with "rain." Importantly, the above command will only replace the first instance of "snow" on a line. 
+    
+    Command 2:g expression, meaning "global". 
+Here sed searches forests.txt for the word "snow" and replaces it with "rain", globally. 
+All instances of "snow" on a line will be turned to "rain".
+    
+    
+>>>SUMMARY<<<
+
+    Redirection reroutes standard input, standard output, and standard error.
+
+    The common redirection commands are:
+        > redirects standard output of a command to a file, overwriting previous content.
+        >> redirects standard output of a command to a file, appending new content to old content.
+        < redirects standard input to a command.
+        | redirects standard output of a command to another command.
+
+    A number of other commands are powerful when combined with redirection commands:
+        sort: sorts lines of text alphabetically.
+        uniq: filters duplicate, adjacent lines of text.
+        grep: searches for a text pattern and outputs it.
+        sed : searches for a text pattern, modifies it, and outputs it.
+        
+        
+***ENVIRONMENT***
+Configure environment using command line--Each time we launch the terminal application, it creates a new session. The session immediately loads settings and preferences that make up the command line environment
+We can configure the environment to support the commands and programs we create. This enables us to customize greetings and command aliases, and create variables to share across commands and programs.
+
+~/.bash_profile is the name of file used to store environment settings. 
+It is commonly called the "bash profile". When a session starts, it will load the contents of the bash profile before executing commands.
+    
+1) ~/.bash_profile
+2) alias
+3)use "source" to activate the changes in the bash profile for the current session.
+4)environment variables are variables that can be used across commands and programs and hold information about the environment.
+
+
+***SUMMARY**
+
+You learned to use the bash profile to configure the environment. What can we generalize so far?
+
+    The environment refers to the preferences and settings of the current user.
+
+    The nano editor is a command line text editor used to configure the environment.
+
+    ~/.bash_profile is where environment settings are stored. You can edit this file with nano.
+
+    environment variables are variables that can be used across commands and programs and hold information about the environment.
+        export VARIABLE="Value" sets and exports an environment variable.
+        USER is the name of the current user.
+        PS1 is the command prompt.
+        HOME is the home directory. It is usually not customized.
+        PATH returns a colon separated list of file paths. It is customized in advanced cases.
+        env returns a list of environment variables.
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    **GIT commands**
+    git clone
+    git status
+    git commit -a -m "comment"
+    git config --list
+    
+    
